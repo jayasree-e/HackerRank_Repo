@@ -1,0 +1,9 @@
+import java.util.Calendar;
+public class DayOfWeek{
+    public static String getDay(String date,String month,String year){
+    Calendar c = Calendar.getInstance();
+    c.set(Integer.parseInt(year),Integer.parseInt(month)-1,Integer.parseInt(date));
+    int day = c.get(Calendar.DAY_OF_WEEK);
+    String days[]={"SUNDAY","MONDAY","TUESDAY","WEDNESDAY","THURSDAY","FRIDAY","SATURDAY"};
+        return days[day-1];
+}
