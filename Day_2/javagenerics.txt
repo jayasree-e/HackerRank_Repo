@@ -1,0 +1,10 @@
+class Printer
+{
+   //Write your code here
+    <T> void printArray(T[] ele){
+        for(T values : ele){
+            System.out.println(values);
+        }
+    }
+ 
+}
