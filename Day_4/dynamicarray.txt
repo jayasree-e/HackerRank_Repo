@@ -1,0 +1,45 @@
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.function.*;
+import java.util.regex.*;
+import java.util.stream.*;
+import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.toList;
+
+public class Solution {
+
+    // Complete the dynamicArray function below.
+    
+        
+
+    public static void main(String[] args) throws IOException {
+        Scanner sc = new Scanner(System.in);
+        int N = sc.nextInt();
+        int q = sc.nextInt();
+        ArrayList[] slist = new ArrayList[N];
+        for(int i=0;i<N;i++){
+            slist[i] = new ArrayList<Integer>();
+        }
+        int lastAnswer = 0;
+        while(q>0){
+            int c = sc.nextInt();
+            int x = sc.nextInt();
+            int y = sc.nextInt();
+            int index = (x^lastAnswer)%N;
+            if(c == 1){
+                slist[index].add(y);
+            }
+            else if(c == 2){
+                int res = y%(slist[index].size());
+                lastAnswer = (int)slist[index].get(res);
+                System.out.println(lastAnswer);
+            }
+            q--;
+        }
+        
+        
+}}
