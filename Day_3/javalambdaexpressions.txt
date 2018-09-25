@@ -1,0 +1,47 @@
+   // Write your code here
+PerformOperation isOdd(){
+    return num->
+    {
+        if(num%2 != 0)
+            return true;
+        else
+            return false;
+    };
+}
+PerformOperation isPrime(){
+    return num->
+    {
+        int flag = 0;
+        for(int i=2;i<=num/2;i++){
+            if(num%i==0){
+                flag=1;
+                break;
+            }
+            else
+            {
+                flag=0;
+                break;
+            }
+        }
+        if(flag==0)
+            return true;
+        else
+            return false;
+    };
+}
+PerformOperation isPalindrome(){
+    return num->
+    {
+     int remainder=0,sum=0;
+      int temp=num;
+      while(num>0){
+          remainder = num%10;
+          sum=(sum*10)+remainder;
+          num = num/10;
+      }
+        if(temp==sum)
+            return true;
+        return false;
+    };
+}
+}
