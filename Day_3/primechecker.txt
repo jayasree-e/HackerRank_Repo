@@ -1,0 +1,21 @@
+import static java.lang.System.in;
+class Prime{
+    public void checkPrime(int... args){
+        for(int n:args){
+            boolean flag = true;
+            if(n<2){
+                flag = false;
+            }
+            for(int i=2;i<n;i++){
+                if(n%i == 0){
+                    flag=false;
+                }
+            }
+            if(flag)
+                System.out.print(n+" ");
+            else
+                System.out.print("");
+        }
+        System.out.println();
+    }
+}
