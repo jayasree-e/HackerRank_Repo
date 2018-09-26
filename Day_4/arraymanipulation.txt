@@ -1,0 +1,37 @@
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.regex.*;
+
+public class Solution {
+
+        public static void main(String[] args) throws IOException {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int m=sc.nextInt();
+        long[] arr =new long[n];
+       
+        for(int i=0;i<m;i++){
+            int x = sc.nextInt();
+            int y = sc.nextInt();
+            int value = sc.nextInt();
+            arr[x-1] = arr[x-1]+value;
+            if(y<n){
+                arr[y] = arr[y]-value;
+            }
+        }
+           long max = 0;
+        long temp=0;
+            for(int k=0;k<n;k++){
+                temp = temp+arr[k];
+                if(temp>max){
+                    max=temp;
+                }
+            }
+       
+        System.out.println(max);
+    }
+}
