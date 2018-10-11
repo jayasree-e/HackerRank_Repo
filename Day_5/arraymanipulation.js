@@ -26,32 +26,30 @@ function readLine() {
 
 // Complete the arrayManipulation function below.
 function arrayManipulation(n, queries,m) {
-        
         var arr =new Array(n);
-        for(var i=0;i<n;i++)
+       for(var i=0;i<n;i++)
            arr[i]=0;
-        var max = -1;
-     
-        var j;
         for(var i=0;i<m;i++){
             var x = queries[i][0];
             var y = queries[i][1];
             var value = queries[i][2];
-            for(j=x-1;j<=y-1;j++){
-                arr[j]=value+arr[j];
-                
+            arr[x-1] = arr[x-1]+value;
+            if(y<n){
+                arr[y] = arr[y]-value;
             }
         }
-          
-            for(var k=1;k<n;k++){
-                if(arr[k]>max){
-                    max=arr[k];
+           var max = 0;
+        var temp=0;
+            for(var k=0;k<n;k++){
+                temp = temp+arr[k];
+                if(temp>max){
+                    max=temp;
                 }
             }
        
         return max;
-        
-    }
+
+}
 
 function main() {
     const ws = fs.createWriteStream(process.env.OUTPUT_PATH);
