@@ -25,42 +25,39 @@ function readLine() {
 }
 
 // Complete the largestRectangle function below.
-function largestRectangle(h,n) {
-    var maxarea=0;
-    var x=new Array();
-    for(let i=0;i<n;i++)
-      x.push(h[i]);
-    x.sort((a,b)=>a-b);
-    
-    for(var i=0;i<n;i++)
-    {
-        
-        var k=0;
-        var min=x[k];
-        while(min<=h[i]){
-            var count=0;
-            if(h[i]>=min){
-                for( var j=i;j<n;j++) {
-                    if(h[j]>=min) {
-                        count++;
-                    }
-                    else{
-                        break;
-                    }
-                }
-            }
-            else{
-                break;
-            }
-            var area=min*count;
-            if(maxarea<area) {
-                maxarea=area;
-            }
-            k++;
-            min=x[k];
-        }
+function largestRectangle(h) {
+    var s = []; 
+    var n = h.length;
+    var max = 0;
+    var top;  
+    var temp_area;
+
+    var i = 0; 
+    while (i < n) 
+    { 
+        if (s.length == 0 || h[s[s.length - 1]] <= h[i]) 
+            s.push(i++); 
+        else
+        { 
+            top = s[s.length - 1];  
+            s.pop(); 
+
+            temp_area = h[top] * (s.length == 0 ? i : i - s[s.length - 1] - 1); 
+
+            if (max < temp_area) 
+                max = temp_area; 
+        } 
     }
-return maxarea;
+    while (s.length > 0) 
+    { 
+        top = s[s.length - 1]; 
+        s.pop(); 
+        temp_area = h[top] * (s.length == 0 ? i : i - s[s.length - 1] - 1); 
+
+        if (max < temp_area) 
+            max = temp_area; 
+    } 
+    return max;
 }
 
 function main() {
@@ -70,7 +67,7 @@ function main() {
 
     const h = readLine().split(' ').map(hTemp => parseInt(hTemp, 10));
 
-    let result = largestRectangle(h,n);
+    let result = largestRectangle(h);
 
     ws.write(result + "\n");
 
